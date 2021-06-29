@@ -10,4 +10,5 @@ for n in range(N-1):
     
     
  
-st.line_chart(x)
+plt.plot(x , 's-') ;
+st.pyplot()
