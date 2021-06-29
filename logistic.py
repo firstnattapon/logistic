@@ -14,8 +14,5 @@ for n in range(N-1):
 fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
 st.plotly_chart(fig)
 
-fig = go.Figure(data=go.Scatter(x=x , y=x))
-st.plotly_chart(fig)
-
 fig = px.scatter(x=x ,y=x)
 st.plotly_chart(fig)
