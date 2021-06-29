@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.graph_objects as go
 
 λ = st.slider('λ', min_value=0.0, max_value=4.0)
-N = 50 
+N = st.slider('N', min_value=50 , max_value=100) 
 x = np.zeros(N)
 x[0] = st.slider('x0', min_value=0.0, max_value=1.0)
 for n in range(N-1):
