@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
+import plotly.graph_objects as go
 
 λ = 3.782
 N = 50 
@@ -10,11 +11,5 @@ for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
     
     
- 
-# plt.plot(x , 's-')
-
-# fig, ax = plt.subplots()
-# ax.plot(x , 's-')
-st.bar_chart(x)
-
-# st.pyplot(fig)
+fig = go.Figure(data=go.Scatter(x=x, y=[ i for i in N]))
+st.plotly_chart(fig)
