@@ -11,5 +11,5 @@ for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
     
     
-fig = go.Figure(data=go.Scatter(x=x, y=[ i for i in N]))
+fig = go.Figure(data=go.Scatter(x=x))
 st.plotly_chart(fig)
