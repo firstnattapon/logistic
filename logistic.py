@@ -11,6 +11,8 @@ x[0] = st.sidebar.slider('x0', min_value=0.0, max_value=1.0)
 for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
     
+x = x*100
+    
 fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
 st.plotly_chart(fig)
 
