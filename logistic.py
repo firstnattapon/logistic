@@ -11,5 +11,5 @@ for n in range(N-1):
     
     
  
-# plt.plot(x , 's-')
-st.pyplot(x)
+plt.plot(x , 's-')
+st.pyplot()
