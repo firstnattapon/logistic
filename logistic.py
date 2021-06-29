@@ -12,7 +12,7 @@ for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
     
     
-x = round(x*1000)
+x = round(x*1000 , 2)
     
 fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
 st.plotly_chart(fig)
