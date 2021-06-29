@@ -11,5 +11,10 @@ for n in range(N-1):
     
     
  
-plt.plot(x , 's-')
-st.pyplot()
+# plt.plot(x , 's-')
+
+fig, ax = plt.subplots()
+ax.plot(x)
+
+
+st.pyplot(fig)
