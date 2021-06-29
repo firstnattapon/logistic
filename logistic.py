@@ -3,7 +3,10 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import plotly.graph_objects as go
 
-λ = 3.782
+λ = st.slider('λ', min_value=0.0, max_value=4.0)
+
+
+# λ = 3.782
 N = 50 
 x = np.zeros(N)
 x[0] = 0.779
