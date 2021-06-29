@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 import plotly.graph_objects as go
+import plotly.express as px
 
 λ = st.slider('λ', min_value=0.0, max_value=4.0)
 N = st.slider('N', min_value=50 , max_value=100) 
@@ -14,4 +15,7 @@ fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
 st.plotly_chart(fig)
 
 fig = go.Figure(data=go.Scatter(x=x , y=x))
+st.plotly_chart(fig)
+
+fig = px.scatter(x=x ,y=x)
 st.plotly_chart(fig)
