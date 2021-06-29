@@ -15,6 +15,6 @@ for n in range(N-1):
 
 # fig, ax = plt.subplots()
 # ax.plot(x , 's-')
-st.line_chart(x)
+st.bar_chart(x)
 
 # st.pyplot(fig)
