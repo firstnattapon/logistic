@@ -13,8 +13,8 @@ for n in range(N-1):
  
 # plt.plot(x , 's-')
 
-fig, ax = plt.subplots()
-ax.plot(x , 's-')
+# fig, ax = plt.subplots()
+# ax.plot(x , 's-')
+st.line_chart(x)
 
-
-st.pyplot(fig)
+# st.pyplot(fig)
