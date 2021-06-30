@@ -12,8 +12,6 @@ for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
 
 max = st.sidebar.number_input('max' , 2016)
-    
-    
 x = np.around(x*max)
     
 fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
@@ -22,6 +20,6 @@ st.plotly_chart(fig)
 fig = px.scatter(x=x ,y=x)
 st.plotly_chart(fig)
 
-code = x
+code = x[:-1]
 st.code('{}'.format(code))
 
