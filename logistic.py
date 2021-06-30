@@ -11,7 +11,7 @@ x[0] = st.sidebar.slider('x0', min_value=0.0, max_value=1.0)
 for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
 
-max = st.number_input('max' , 2016)
+max = st.sidebar.number_input('max' , 2016)
     
     
 x = np.around(x*max)
