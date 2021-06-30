@@ -20,6 +20,6 @@ st.plotly_chart(fig)
 fig = px.scatter(x=x ,y=x)
 st.plotly_chart(fig)
 
-code = np.np.sort(x)
+code = np.sort(x)
 st.code('{}'.format(code))
 
