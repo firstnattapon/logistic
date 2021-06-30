@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
 
-λ = st.sidebar.slider('λ', min_value=0.0, max_value=4.0)
+λ = st.sidebar.number_input('λ',3.0)
 N = st.sidebar.slider('N', min_value=50 , max_value=100) 
 x = np.zeros(N)
 x[0] = st.sidebar.slider('x0', min_value=0.0, max_value=1.0)
