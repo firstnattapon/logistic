@@ -22,5 +22,6 @@ st.plotly_chart(fig)
 fig = px.scatter(x=x ,y=x)
 st.plotly_chart(fig)
 
-st.code('for i in range(8): foo()')
+code = x
+st.code('{}'.format(code))
 
