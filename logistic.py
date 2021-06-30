@@ -18,6 +18,7 @@ fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
 st.plotly_chart(fig)
 
 fig = px.scatter(x=x ,y=x)
+fig.add_hline(y=x)
 st.plotly_chart(fig)
 
 code = np.sort(np.unique(x))
