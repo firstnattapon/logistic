@@ -21,5 +21,5 @@ fig = px.scatter(x=x ,y=x)
 st.plotly_chart(fig)
 
 code = np.sort(np.unique(x))
-st.code('{} \n\n n = {}'.format(code , len(x)))
+st.code('{} \n\n n = {}'.format(code , len(code)))
 
