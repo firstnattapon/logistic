@@ -98,10 +98,10 @@ class  delta :
         change_data['0'] = 0
         return change_data
     
-λ = st.sidebar.slider('λ', min_value=0.0 , max_value=4.0 , value=0.95 , step= 0.01)
-N = st.sidebar.slider('N', min_value=50 , max_value=100 , value=50 , step= 0.01) 
+λ = st.sidebar.slider('λ', min_value=0.0 , max_value=4.0 , value=0.95)
+N = st.sidebar.slider('N', min_value=50 , max_value=100 , value=50  ) 
 x = np.zeros(N)
-x[0] = st.sidebar.slider('x0', min_value=0.0, max_value=1.0, value=0.50 , step= 0.01)
+x[0] = st.sidebar.slider('x0', min_value=0.0, max_value=1.0, value=0.50 )
 for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
 
