@@ -7,7 +7,6 @@ import pandas as pd
 import pandas_datareader  as pdr
 import ccxt
 import warnings
-warnings.filterwarnings("ignore", category=RuntimeWarning)
 from datetime import datetime
 
 class  delta :
