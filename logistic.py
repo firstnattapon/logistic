@@ -120,8 +120,7 @@ if st.sidebar.checkbox('linear',value=False) :
 else :
     code = np.sort(np.unique(x))
     
-st.button('save model):
-          pass
+st.button('save model)
           
 
 
