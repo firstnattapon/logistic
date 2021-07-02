@@ -124,13 +124,13 @@ st.code('{} \n\n n = {}'.format(code , len(code)))
 
 #  ____________________________________________________________________
 
-col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
+col1, col2 , col3 , col4 , col5 , col6   = st.beta_columns(6)
 pair_data = col1.text_input("pair_data", "CRV/USD")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "5m")
 limit =  int(col5.text_input("limit" , "2016"))
-
+minimum_re = int(col6.text_input("minimum_re" , "0.001"))
 delta_A = delta(usd = invest ,
                 fix_value = fix_value ,  
                 pair_data = pair_data ,
