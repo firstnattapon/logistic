@@ -95,9 +95,8 @@ class  delta :
         change_data[' : '] = ' : '
         change_data['price_change'] =   ((change_data['sumusd_mkt'] - change_data.iloc[0, 12]) / change_data.iloc[0, 12]) * 100
         change_data['pv_change']  = ((change_data['sumusd'] - change_data.iloc[0 , 7] ) / change_data.iloc[0 , 7]) *100
-
+        change_data['0'] = 0
         return change_data
-
     
 λ = st.sidebar.number_input('λ',3.0)
 N = st.sidebar.slider('N', min_value=50 , max_value=100) 
@@ -138,9 +137,9 @@ delta_A = delta(usd = invest ,
       
 delta_A= delta_A.change()
 
-_ = delta_A[['cf_change' ,'price_change' ]] ; _.columns = ['1: cf_%', '2: mkt_%' ] 
+_ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
-_ = delta_A[[ 'pv_change', 'price_change' ]] ; _.columns = ['1: pv_%', '2: mkt_%' ] 
+_ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
 st.line_chart(_)
 
 st.write('data        :' , len(delta_A) )
