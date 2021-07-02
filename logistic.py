@@ -120,12 +120,6 @@ if st.sidebar.checkbox('linear',value=False) :
 else :
     code = np.sort(np.unique(x))
     
-    
-if st.sidebar.checkbox('save model',value=False) :
-    data_seve = "λ={} , N={} , x0{} =".format(λ , N , x[0])
-    seve = np.array[data_seve]
-    np.save("../model.npz" , seve, allow_pickle=True, fix_imports=True)
-
 st.code('{} \n\n n = {}'.format(code , len(code)))
 
 #  ____________________________________________________________________
