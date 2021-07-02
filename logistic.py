@@ -121,7 +121,7 @@ else :
     code = np.sort(np.unique(x))
     
     
-a = st.sidebar.button('save model)
+a = st.sidebar.button('save model')
 st.sidebar.write(a)    
 
 
