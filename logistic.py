@@ -118,3 +118,33 @@ st.plotly_chart(fig)
 
 code = np.sort(np.unique(x))
 st.code('{} \n\n n = {}'.format(code , len(code)))
+
+
+#  streamlit
+col1, col2 , col3 , col4 , col5   = st.beta_columns(5)
+pair_data = col1.text_input("pair_data", "CRV/USD")
+fix_value = float(col2.text_input("fix_value", "0.5" ))
+invest =  int(col3.text_input("invest" , "1000"))
+timeframe = col4.text_input("timeframe", "1h")
+limit = int(col5.text_input("limit", "2500"))
+
+delta_A = delta(usd = invest , fix_value = fix_value , pair_data = pair_data , timeframe =  timeframe  , limit  = limit)
+delta_A= delta_A.cf()
+
+_ = delta_A[['cf_change' ,'change_mkt' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+st.line_chart(_)
+_ = delta_A[[ 'pvnav_change', 'change_mkt' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"] 
+st.line_chart(_)
+
+st.write('data        :' , len(delta_A) )
+st.write('')
+st.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
+st.write('')
+st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
+
+_, _ , head , _ ,   = st.beta_columns(4) 
+head.write('เริ่ม')
+st.dataframe(delta_A.head(1))
+_, _ , tail , _ ,   = st.beta_columns(4)
+tail.write('ล่าสุด')
+st.dataframe(delta_A.tail(1))
