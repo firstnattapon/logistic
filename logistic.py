@@ -115,7 +115,13 @@ fig = px.scatter(x=x ,y=x)
 for l in np.sort(np.unique(x)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
 
-code = np.sort(np.unique(x))
+
+linear =  st.sidebar.checkbox('linear')
+if linear :
+    code = [ i for i in range(len(max))]
+else :
+    code = np.sort(np.unique(x))
+
 st.code('{} \n\n n = {}'.format(code , len(code)))
 
 #  ____________________________________________________________________
