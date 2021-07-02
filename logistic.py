@@ -119,6 +119,11 @@ if st.sidebar.checkbox('linear',value=False) :
     code = [ i for i in range(max)]
 else :
     code = np.sort(np.unique(x))
+    
+st.button('save model):
+          pass
+          
+
 
 st.code('{} \n\n n = {}'.format(code , len(code)))
 
