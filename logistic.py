@@ -153,9 +153,12 @@ st.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
 st.write('')
 st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 
-_, _ , head , _ ,   = st.beta_columns(4) 
-head.write('เริ่ม')
-st.dataframe(delta_A.head(1))
-_, _ , tail , _ ,   = st.beta_columns(4)
-tail.write('ล่าสุด')
-st.dataframe(delta_A.tail(1))
+# _, _ , head , _ ,   = st.beta_columns(4) 
+# head.write('เริ่ม')
+# st.dataframe(delta_A.head(1))
+# _, _ , tail , _ ,   = st.beta_columns(4)
+# tail.write('ล่าสุด')
+# st.dataframe(delta_A.tail(1))
+
+st.dataframe(delta_A)
+
