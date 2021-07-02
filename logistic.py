@@ -34,14 +34,12 @@ class  delta :
         df = df.dropna()
         return df
     
-    @st.cache(suppress_st_warning = True)    
     def series(self):
         series  = self.get_data()
         series['index'] = [ i for i in range(len(series))]
         series['perdit'] =series['index'].apply(func= (lambda x : np.where( x in self.series_num , 1 , 0)))
         return series
     
-    @st.cache(suppress_st_warning = True)    
     def  nav (self):
         nav_data = self.series()
         nav_data['amount'] =  np.nan
@@ -75,7 +73,6 @@ class  delta :
 
         return nav_data
 
-    @st.cache(suppress_st_warning = True)    
     def  mkt (self):
         mkt_data  = self.nav()
         mkt_data[':'] = ':'
@@ -86,7 +83,6 @@ class  delta :
 
         return mkt_data
 
-    @st.cache(suppress_st_warning = True)    
     def cf (self):
         cf_data = self.mkt()
         cf_data[': '] = ': '
@@ -95,7 +91,6 @@ class  delta :
 
         return cf_data
 
-    @st.cache(suppress_st_warning = True)    
     def change (self):
         change_data = self.cf()
         change_data[' : '] = ' : '
