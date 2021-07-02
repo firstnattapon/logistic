@@ -118,7 +118,7 @@ st.plotly_chart(fig)
 
 linear =  st.sidebar.checkbox('linear')
 if linear :
-    code = [ i for i in range(len(max))]
+    code = [ i for i in range(max)]
 else :
     code = np.sort(np.unique(x))
 
