@@ -6,4 +6,4 @@ plotly
 pandas
 pandas_datareader
 ccxt
-datetime
+
