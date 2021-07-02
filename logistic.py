@@ -138,9 +138,9 @@ delta_A = delta(usd = invest ,
       
 delta_A= delta_A.cf()
 
-_ = delta_A[['cf_change' ,'change_mkt' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+_ = delta_A[['cf_change' ,'price_change' ]] ; _.columns = ['1: cf_%', '2: mkt_%' ] 
 st.line_chart(_)
-_ = delta_A[[ 'pvnav_change', 'change_mkt' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"] 
+_ = delta_A[[ 'pv_change', 'price_change' ]] ; _.columns = ['1: pv_%', '2: mkt_%' ] 
 st.line_chart(_)
 
 st.write('data        :' , len(delta_A) )
