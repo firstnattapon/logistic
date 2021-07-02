@@ -11,7 +11,7 @@ from datetime import datetime
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, pair_data = 'SRM-PERP', timeframe = '5m' 
-                 , limit  = 2016 , series_num = [None] , minimum_re = 0.001):
+                 , limit  = 2016 , series_num = [None] , minimum_re = 0.005):
         self.usd    = usd
         self.fix_value  = fix_value
         self.pair_data = pair_data
