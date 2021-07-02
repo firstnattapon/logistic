@@ -115,8 +115,7 @@ fig = px.scatter(x=x ,y=x)
 for l in np.sort(np.unique(x)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
 
-
-if st.sidebar.checkbox('linear') :
+if st.sidebar.checkbox('linear',value=False) :
     code = [ i for i in range(max)]
 else :
     code = np.sort(np.unique(x))
