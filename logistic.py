@@ -20,7 +20,6 @@ class  delta :
         self.series_num = series_num
         self.minimum_re = minimum_re
         
-    @st.cache(suppress_st_warning = True)    
     def get_data(self):
         exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
         ohlcv = exchange.fetch_ohlcv(self.pair_data, self.timeframe, limit=self.limit)
