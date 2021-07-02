@@ -130,7 +130,7 @@ fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "5m")
 limit =  int(col5.text_input("limit" , "2016"))
-minimum_re = int(col6.text_input("minimum_re" , "0.001"))
+minimum_re = float(col6.text_input("minimum_re" , "0.001"))
 
 delta_A = delta(usd = invest ,
                 fix_value = fix_value ,  
