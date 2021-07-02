@@ -6,5 +6,4 @@ plotly
 pandas
 pandas_datareader
 ccxt
-warnings
 datetime
