@@ -126,7 +126,7 @@ pair_data = col1.text_input("pair_data", "CRV/USD")
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "5m")
-limit = int(col5.text_input("limit", "{}".format(max))
+limit = st.number_input('limit' , 2016)
 
 delta_A = delta(usd = invest ,
                 fix_value = fix_value ,
