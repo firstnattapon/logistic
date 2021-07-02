@@ -116,8 +116,7 @@ for l in np.sort(np.unique(x)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
 
 
-linear =  st.sidebar.checkbox('linear')
-if linear :
+if st.sidebar.checkbox('linear') :
     code = [ i for i in range(max)]
 else :
     code = np.sort(np.unique(x))
