@@ -151,7 +151,7 @@ delta_A = delta(usd = invest ,
                 series_num = code ,
                 minimum_re = minimum_re)
       
-delta_A= delta_A.change()
+delta_A= delta_A.final()
 
 _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
 st.line_chart(_)
