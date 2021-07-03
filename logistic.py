@@ -21,6 +21,7 @@ class  delta :
         self.minimum_re = minimum_re
         self.start_end = start_end
         
+    @st.cache(suppress_st_warning=True)
     def get_data(self):
         exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
         ohlcv = exchange.fetch_ohlcv(self.pair_data, self.timeframe, limit=self.limit)
@@ -176,5 +177,4 @@ st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 # _, _ , tail , _ ,   = st.beta_columns(4)
 # tail.write('ล่าสุด')
 # st.dataframe(delta_A.tail(1))
-
 # st.dataframe(delta_A)
