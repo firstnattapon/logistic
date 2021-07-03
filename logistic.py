@@ -130,7 +130,7 @@ start = st.sidebar.date_input('start')
 date = pd.to_datetime(start)
 date = date.index.dayofyear
 st.sidebar.write(date)
-end = st.sidebar.date_input('end')
+# end = st.sidebar.date_input('end')
 
 if st.sidebar.checkbox('linear',value=False) :
     code = [ i for i in range(max)]
