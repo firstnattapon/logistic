@@ -127,13 +127,15 @@ if st.sidebar.checkbox('linear',value=False) :
 else :
     code = np.sort(np.unique(z))    
     
-fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
-st.plotly_chart(fig)
+if st.checkbox('Scatter',value=False) :    
+    fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
+    st.plotly_chart(fig)
 
-fig = px.scatter(x=z , y=z)
-for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
-st.plotly_chart(fig)
-    
+    fig = px.scatter(x=z , y=z)
+    for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
+    st.plotly_chart(fig)
+else : pass
+
 st.code('{} \n\n n = {}'.format(code , len(code)))
 
 #  ____________________________________________________________________
@@ -160,10 +162,10 @@ delta_A = delta(usd = invest ,
 
 delta_A= delta_A.final()
 
-# _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
-# st.line_chart(_)
-# _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
-# st.line_chart(_)
+_ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+st.line_chart(_)
+_ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
+st.line_chart(_)
 
 st.sidebar.write('data        :' , len(delta_A) )
 st.sidebar.write('')
