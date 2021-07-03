@@ -126,11 +126,6 @@ fig = px.scatter(x=x ,y=x)
 for l in np.sort(np.unique(x)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
 
-start = st.sidebar.date_input('start' , datetime.date(2011,1,1))
-start = start.timetuple().tm_yday
-st.sidebar.code(start)
-# end = st.sidebar.date_input('end')
-
 if st.sidebar.checkbox('linear',value=False) :
     code = [ i for i in range(max)]
 else :
@@ -147,6 +142,8 @@ invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "5m")
 limit =  int(col5.text_input("limit" , "5000"))
 minimum_re = float(col6.text_input("minimum_re" , "0.005"))
+start = st.sidebar.date_input('start' , datetime.date(2021,07,1)) ; start = start.timetuple().tm_yday
+end = st.sidebar.date_input('end', datetime.date(2021,07,7)) ; end =  end.timetuple().tm_yday
 
 delta_A = delta(usd = invest ,
                 fix_value = fix_value ,  
@@ -154,8 +151,10 @@ delta_A = delta(usd = invest ,
                 timeframe =  timeframe  ,
                 limit  = limit ,
                 series_num = code ,
-                minimum_re = minimum_re)
-      
+                minimum_re = minimum_re,
+                start_end = [start , end]
+               )
+
 delta_A= delta_A.final()
 
 _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
