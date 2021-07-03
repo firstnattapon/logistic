@@ -126,7 +126,7 @@ fig = px.scatter(x=x ,y=x)
 for l in np.sort(np.unique(x)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
 
-start = st.sidebar.date_input('start')
+start = st.sidebar.date_input('start' , datetime.date(2019, 7, 6))
 
 end = st.sidebar.date_input('end')
 
