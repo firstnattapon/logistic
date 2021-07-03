@@ -163,4 +163,4 @@ st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 st.dataframe(delta_A)
 
 xx = st.date_input('Date input')
-st.write(xx)
+pd.to_datetime(xx)
