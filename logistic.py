@@ -128,7 +128,7 @@ st.plotly_chart(fig)
 
 start = st.sidebar.date_input('start')
 start_to_datetime = pd.to_datetime(start)
-start_df = pd.DataFrame()
+start_df = pd.DataFrame(index=[start])
 start_df.index = start_to_datetime
 st.sidebar.write(start_df)
 end = st.sidebar.date_input('end')
