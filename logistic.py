@@ -20,7 +20,8 @@ class  delta :
         self.series_num = series_num
         self.minimum_re = minimum_re
         self.start_end = start_end
-
+        
+    @st.cache
     def get_data(self):
         exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
         ohlcv = exchange.fetch_ohlcv(self.pair_data, self.timeframe, limit=self.limit)
@@ -117,7 +118,7 @@ for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
     
 
-max = st.sidebar.number_input('max' , 2016)
+max = st.sidebar.number_input('max' , 2304)
 x = np.around(x*max)
 
 if st.sidebar.checkbox('linear',value=False) :
