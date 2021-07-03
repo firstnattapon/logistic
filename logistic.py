@@ -122,9 +122,9 @@ max = st.sidebar.number_input('max' , 2304)
 x = np.around(x*max)
 
 if st.sidebar.checkbox('linear',value=False) :
-    code = [ i for i in range(max)]
+    x = [ i for i in range(max)]
 else :
-    code = np.sort(np.unique(x))    
+    x = np.sort(np.unique(x))    
     
 fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
 st.plotly_chart(fig)
@@ -133,7 +133,7 @@ fig = px.scatter(x=x ,y=x)
 for l in np.sort(np.unique(x)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
     
-st.code('{} \n\n n = {}'.format(code , len(code)))
+st.code('{} \n\n n = {}'.format(x , len(x)))
 
 #  ____________________________________________________________________
 
@@ -152,7 +152,7 @@ delta_A = delta(usd = invest ,
                 pair_data = pair_data ,
                 timeframe =  timeframe  ,
                 limit  = limit ,
-                series_num = code ,
+                series_num = x ,
                 minimum_re = minimum_re,
                 start_end = [start , end]
                )
