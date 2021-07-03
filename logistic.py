@@ -162,10 +162,12 @@ delta_A = delta(usd = invest ,
 
 delta_A= delta_A.final()
 
-_ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
-st.line_chart(_)
-_ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
-st.line_chart(_)
+if st.checkbox('cf',value=False) :    
+    _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+    st.line_chart(_)
+    _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
+    st.line_chart(_)
+else : pass
 
 st.sidebar.write('data        :' , len(delta_A) )
 st.sidebar.write('')
