@@ -128,7 +128,8 @@ st.plotly_chart(fig)
 
 start = st.sidebar.date_input('start')
 start = pd.DataFrame(data=None, index=[start])
-st.sidebar.write(start.index)
+start = start.index.dayofyear
+st.sidebar.write(start)
 end = st.sidebar.date_input('end')
 
 if st.sidebar.checkbox('linear',value=False) :
