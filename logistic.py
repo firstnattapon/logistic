@@ -127,7 +127,7 @@ for l in np.sort(np.unique(x)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
 
 start = st.sidebar.date_input('start' ,datetime.date(2011,1,1))
-
+st.write(start.tm_yday)
 end = st.sidebar.date_input('end')
 
 if st.sidebar.checkbox('linear',value=False) :
