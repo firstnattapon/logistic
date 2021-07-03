@@ -115,6 +115,11 @@ x = np.zeros(N)
 x[0] = st.sidebar.slider('x0', min_value=0.0, max_value=1.0, value=0.50 )
 for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
+    
+if st.sidebar.checkbox('linear',value=False) :
+    code = [ i for i in range(max)]
+else :
+    code = np.sort(np.unique(x))    
 
 max = st.sidebar.number_input('max' , 2016)
 x = np.around(x*max)
@@ -125,11 +130,6 @@ st.plotly_chart(fig)
 fig = px.scatter(x=x ,y=x)
 for l in np.sort(np.unique(x)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
-
-if st.sidebar.checkbox('linear',value=False) :
-    code = [ i for i in range(max)]
-else :
-    code = np.sort(np.unique(x))
     
 st.code('{} \n\n n = {}'.format(code , len(code)))
 
