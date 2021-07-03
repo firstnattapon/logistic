@@ -111,7 +111,7 @@ class  delta :
         return final
 
 # λ = st.sidebar.slider('λ', min_value=0.0 , max_value=4.0 , value=3.64)
-λ = st.sidebar.number_input('λ', 3.99  ) 
+λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=3.64 ) 
 # N = st.sidebar.slider('N', min_value=50 , max_value=200 , value=100  ) 
 N = st.sidebar.number_input('N', 50  ) 
 x = np.zeros(N)
