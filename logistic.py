@@ -116,13 +116,14 @@ x[0] = st.sidebar.slider('x0', min_value=0.0, max_value=1.0, value=0.50 )
 for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
     
+
+max = st.sidebar.number_input('max' , 2016)
+x = np.around(x*max)
+
 if st.sidebar.checkbox('linear',value=False) :
     code = [ i for i in range(max)]
 else :
     code = np.sort(np.unique(x))    
-
-max = st.sidebar.number_input('max' , 2016)
-x = np.around(x*max)
     
 fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
 st.plotly_chart(fig)
