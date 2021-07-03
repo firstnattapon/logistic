@@ -124,7 +124,7 @@ z = np.around(x*max)
 if st.sidebar.checkbox('linear',value=False) :
     z = [ i for i in range(max)]
 else :
-    z = np.sort(np.unique(x))    
+    z = np.sort(np.unique(z))    
     
 fig = go.Figure(data=go.Scatter(y=z , mode='lines+markers'))
 st.plotly_chart(fig)
