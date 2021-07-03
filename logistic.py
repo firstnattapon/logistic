@@ -131,6 +131,9 @@ if st.sidebar.checkbox('linear',value=False) :
 else :
     code = np.sort(np.unique(x))
     
+start_end = st.sidebar.date_input('start_end')
+
+    
 st.code('{} \n\n n = {}'.format(code , len(code)))
 
 #  ____________________________________________________________________
