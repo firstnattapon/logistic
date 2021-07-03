@@ -8,6 +8,7 @@ import pandas_datareader  as pdr
 import ccxt
 import warnings
 from datetime import datetime
+import datetime
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, pair_data = 'SRM-PERP', timeframe = '5m' 
