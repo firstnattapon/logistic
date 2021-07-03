@@ -167,6 +167,8 @@ st.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
 st.write('')
 st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 
+
+#_______________________________________________________
 # _, _ , head , _ ,   = st.beta_columns(4) 
 # head.write('เริ่ม')
 # st.dataframe(delta_A.head(1))
@@ -174,7 +176,9 @@ st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 # tail.write('ล่าสุด')
 # st.dataframe(delta_A.tail(1))
 
-st.dataframe(delta_A)
 
-xx = st.date_input('Date input')
-st.write(pd.to_datetime(xx))
+
+# st.dataframe(delta_A)
+
+# xx = st.date_input('Date input')
+# st.write(pd.to_datetime(xx))
