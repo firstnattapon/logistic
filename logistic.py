@@ -144,8 +144,8 @@ invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "5m")
 limit =  int(col5.text_input("limit" , "5000"))
 minimum_re = float(col6.text_input("minimum_re" , "0.005"))
-start = st.sidebar.date_input('start' , datetime.date(2021,7,1)) ; start = start.timetuple().tm_yday ; st.sidebar.write(start)
-end = st.sidebar.date_input('end', datetime.date(2021,7,7)) ; end =  end.timetuple().tm_yday ; st.sidebar.write(end)
+start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday ; st.sidebar.write(start)
+end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday ; st.sidebar.write(end)
 
 delta_A = delta(usd = invest ,
                 fix_value = fix_value ,  
