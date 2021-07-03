@@ -126,7 +126,7 @@ if st.sidebar.checkbox('linear',value=False) :
 else :
     code = np.sort(np.unique(x))    
     
-fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
+fig = go.Figure(data=go.Scatter(y=code , mode='lines+markers'))
 st.plotly_chart(fig)
 
 fig = px.scatter(x=x ,y=x)
