@@ -130,7 +130,7 @@ fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
 st.plotly_chart(fig)
 
 fig = px.scatter(x=z , y=z)
-for l in  np.sort(np.unique(z)) : fig.add_hline(y=l , line_width=1.0)
+for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
     
 st.code('{} \n\n n = {}'.format(code , len(code)))
