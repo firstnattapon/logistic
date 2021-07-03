@@ -177,4 +177,4 @@ st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 # tail.write('ล่าสุด')
 # st.dataframe(delta_A.tail(1))
 
-st.dataframe(delta_A)
+# st.dataframe(delta_A)
