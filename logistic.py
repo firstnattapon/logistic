@@ -121,7 +121,7 @@ if st.sidebar.checkbox('linear',value=False) :
 else :
     code = np.sort(np.unique(x))    
 
-max = st.sidebar.number_input('max' , 2016)
+max = st.sidebar.number_input('max' , 2304)
 x = np.around(x*max)
     
 fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
