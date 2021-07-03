@@ -162,4 +162,5 @@ st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 
 st.dataframe(delta_A)
 
-st.date_input('Date input')
+xx = st.date_input('Date input')
+st.write(xx)
