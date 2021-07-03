@@ -28,13 +28,13 @@ class  delta :
         df = pd.DataFrame(ohlcv)
         df.t = df.t.apply(lambda x: datetime.fromtimestamp(x))
         df = df.set_index(df['t']);
-        df.index = df.index.dayofyear
+        df.t = df.index.dayofyear
+        df = df.loc[df.t >= self.start_end[0]]
+        df = df.loc[df.t <= self.start_end[1]]
         df = df.drop(['t'], axis=1)
         df = df.rename(columns={"o": "open", "h": "high", "l": "low", "c": "close", "v": "volume"})
         df = df.drop(['open', 'high' , 'low' , 'volume'] , axis=1) 
         df = df.dropna()
-        df = df.loc[df.index >= self.start_end[0]]
-        df = df.loc[df.index <= self.start_end[1]]
         return df
 
     def series(self):
@@ -101,6 +101,7 @@ class  delta :
         change_data['pv_change']  = ((change_data['sumusd'] - change_data.iloc[0 , 7] ) / change_data.iloc[0 , 7]) *100
 
         return change_data
+
 
 λ = st.sidebar.slider('λ', min_value=0.0 , max_value=4.0 , value=0.95)
 N = st.sidebar.slider('N', min_value=50 , max_value=100 , value=50  ) 
