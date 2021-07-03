@@ -110,13 +110,12 @@ class  delta :
         return final
 
 λ = st.sidebar.slider('λ', min_value=0.0 , max_value=4.0 , value=3.64)
-N = st.sidebar.slider('N', min_value=50 , max_value=100 , value=100  ) 
+N = st.sidebar.slider('N', min_value=50 , max_value=200 , value=100  ) 
 x = np.zeros(N)
 x[0] = st.sidebar.slider('x0', min_value=0.0, max_value=1.0, value=0.19 )
 for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
     
-
 max = st.sidebar.number_input('max' , 2304)
 x = np.around(x*max)
 
