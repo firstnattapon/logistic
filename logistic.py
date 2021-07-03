@@ -129,8 +129,8 @@ else :
 fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
 st.plotly_chart(fig)
 
-fig = px.scatter(y=z)
-for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
+fig = px.scatter(x=code , y=code)
+for l in np.sort(np.unique(code)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
     
 st.code('{} \n\n n = {}'.format(code , len(code)))
