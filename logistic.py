@@ -7,7 +7,6 @@ import pandas as pd
 import pandas_datareader  as pdr
 import ccxt
 import warnings
-from datetime import datetime
 import datetime
 
 class  delta :
@@ -27,7 +26,7 @@ class  delta :
         ohlcv = exchange.fetch_ohlcv(self.pair_data, self.timeframe, limit=self.limit)
         ohlcv = exchange.convert_ohlcv_to_trading_view(ohlcv)
         df = pd.DataFrame(ohlcv)
-        df.t = df.t.apply(lambda x: datetime.fromtimestamp(x))
+        df.t = df.t.apply(lambda x: datetime.datetime.fromtimestamp(x))
         df = df.set_index(df['t']);
         df.t = df.index.dayofyear
         df = df.loc[df.t >= self.start_end[0]]
