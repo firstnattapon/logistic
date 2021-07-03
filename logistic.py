@@ -102,7 +102,6 @@ class  delta :
 
         return change_data
 
-
 λ = st.sidebar.slider('λ', min_value=0.0 , max_value=4.0 , value=0.95)
 N = st.sidebar.slider('N', min_value=50 , max_value=100 , value=50  ) 
 x = np.zeros(N)
