@@ -119,21 +119,21 @@ for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
     
 max = st.sidebar.number_input('max' , 2304)
-z = np.around(x*max)
+x = np.around(x*max)
 
 if st.sidebar.checkbox('linear',value=False) :
-    z = [ i for i in range(max)]
+    code = [ i for i in range(max)]
 else :
-    z = np.sort(np.unique(z))    
+    code = np.sort(np.unique(x))    
     
-fig = go.Figure(data=go.Scatter(y=z , mode='lines+markers'))
+fig = go.Figure(data=go.Scatter(y=x , mode='lines+markers'))
 st.plotly_chart(fig)
 
-fig = px.scatter(x=z ,y=z)
-for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
+fig = px.scatter(x=x ,y=x)
+for l in np.sort(np.unique(x)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
     
-st.code('{} \n\n n = {}'.format(z , len(z)))
+st.code('{} \n\n n = {}'.format(code , len(code)))
 
 #  ____________________________________________________________________
 
@@ -152,7 +152,7 @@ delta_A = delta(usd = invest ,
                 pair_data = pair_data ,
                 timeframe =  timeframe  ,
                 limit  = limit ,
-                series_num = z ,
+                series_num = code  ,
                 minimum_re = minimum_re,
                 start_end = [start , end]
                )
