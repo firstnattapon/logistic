@@ -11,7 +11,7 @@ from datetime import datetime
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, pair_data = 'SRM-PERP', timeframe = '5m' 
-                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [180 , 183]):
+                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [170 , 177]):
         self.usd    = usd
         self.fix_value  = fix_value
         self.pair_data = pair_data
@@ -101,6 +101,13 @@ class  delta :
         change_data['pv_change']  = ((change_data['sumusd'] - change_data.iloc[0 , 7] ) / change_data.iloc[0 , 7]) *100
 
         return change_data
+
+    def  final (self):
+        final = self.change()
+        final[' :  '] = ' :  '
+        final['0'] =  0
+        final['t'] =    final.index.dayofyear
+        return final
 
 λ = st.sidebar.slider('λ', min_value=0.0 , max_value=4.0 , value=0.95)
 N = st.sidebar.slider('N', min_value=50 , max_value=100 , value=50  ) 
