@@ -127,10 +127,7 @@ for l in np.sort(np.unique(x)): fig.add_hline(y=l , line_width=1.0)
 st.plotly_chart(fig)
 
 start = st.sidebar.date_input('start')
-date = pd.to_datetime(start)
-date = date.index.dayofyear
-st.sidebar.write(date)
-# end = st.sidebar.date_input('end')
+end = st.sidebar.date_input('end')
 
 if st.sidebar.checkbox('linear',value=False) :
     code = [ i for i in range(max)]
@@ -170,7 +167,6 @@ st.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
 st.write('')
 st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 
-#_______________________________________________________
 # _, _ , head , _ ,   = st.beta_columns(4) 
 # head.write('เริ่ม')
 # st.dataframe(delta_A.head(1))
@@ -178,8 +174,4 @@ st.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
 # tail.write('ล่าสุด')
 # st.dataframe(delta_A.tail(1))
 
-
-# st.dataframe(delta_A)
-
-# xx = st.date_input('Date input')
-# st.write(pd.to_datetime(xx))
+st.dataframe(delta_A)
