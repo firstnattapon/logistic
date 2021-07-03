@@ -113,7 +113,7 @@ class  delta :
 N = st.sidebar.slider('N', min_value=50 , max_value=200 , value=100  ) 
 x = np.zeros(N)
 # x[0] = st.sidebar.slider('x0', min_value=0.0, max_value=1.0, value=0.19 )
-x[0] = st.sidebar.number_input('x0' , 0.19)
+x[0] = st.sidebar.number_input('x0' , 0.0)
 
 for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
