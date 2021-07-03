@@ -11,7 +11,7 @@ from datetime import datetime
 
 class  delta :
     def __init__(self , usd = 1000 , fix_value = 0.50, pair_data = 'SRM-PERP', timeframe = '5m' 
-                 , limit  = 2016 , series_num = [None] , minimum_re = 0.005):
+                 , limit  = 5000 , series_num = [None] , minimum_re = 0.005 , start_end = [180 , 183]):
         self.usd    = usd
         self.fix_value  = fix_value
         self.pair_data = pair_data
@@ -19,7 +19,8 @@ class  delta :
         self.limit = limit
         self.series_num = series_num
         self.minimum_re = minimum_re
-        
+        self.start_end = start_end
+
     def get_data(self):
         exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
         ohlcv = exchange.fetch_ohlcv(self.pair_data, self.timeframe, limit=self.limit)
@@ -27,18 +28,21 @@ class  delta :
         df = pd.DataFrame(ohlcv)
         df.t = df.t.apply(lambda x: datetime.fromtimestamp(x))
         df = df.set_index(df['t']);
+        df.index = df.index.dayofyear
         df = df.drop(['t'], axis=1)
         df = df.rename(columns={"o": "open", "h": "high", "l": "low", "c": "close", "v": "volume"})
         df = df.drop(['open', 'high' , 'low' , 'volume'] , axis=1) 
         df = df.dropna()
+        df = df.loc[df.index >= self.start_end[0]]
+        df = df.loc[df.index <= self.start_end[1]]
         return df
-    
+
     def series(self):
         series  = self.get_data()
-        series['index'] = [ i for i in range(len(series))]
+        series['index'] =np.array([ i for i in range(len(series))])
         series['perdit'] =series['index'].apply(func= (lambda x : np.where( x in self.series_num , 1 , 0)))
         return series
-    
+
     def  nav (self):
         nav_data = self.series()
         nav_data['amount'] =  np.nan
@@ -95,9 +99,9 @@ class  delta :
         change_data[' : '] = ' : '
         change_data['price_change'] =   ((change_data['sumusd_mkt'] - change_data.iloc[0, 12]) / change_data.iloc[0, 12]) * 100
         change_data['pv_change']  = ((change_data['sumusd'] - change_data.iloc[0 , 7] ) / change_data.iloc[0 , 7]) *100
-        change_data['0'] = 0
+
         return change_data
-    
+
 λ = st.sidebar.slider('λ', min_value=0.0 , max_value=4.0 , value=0.95)
 N = st.sidebar.slider('N', min_value=50 , max_value=100 , value=50  ) 
 x = np.zeros(N)
