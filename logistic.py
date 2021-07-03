@@ -21,7 +21,6 @@ class  delta :
         self.minimum_re = minimum_re
         self.start_end = start_end
         
-    @st.cache
     def get_data(self):
         exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
         ohlcv = exchange.fetch_ohlcv(self.pair_data, self.timeframe, limit=self.limit)
