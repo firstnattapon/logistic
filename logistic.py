@@ -175,7 +175,8 @@ if (button==True):
         st.sidebar.write('')
         st.sidebar.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
     else : pass
-else : pass
+    st.stop()
+else : st.stop()
 
 
 # _, _ , had , _ ,   = st.beta_columns(4) 
