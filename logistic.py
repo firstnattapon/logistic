@@ -146,11 +146,8 @@ invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "5m")
 limit =  int(col5.text_input("limit" , "5000"))
 minimum_re = float(col6.text_input("minimum_re" , "0.005"))
-start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday ; st.sidebar.write(start)
-end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday ; st.sidebar.write(end)
-col7 , col8    = st.beta_columns(2)
-col7.sidebar.write(start)
-col8.sidebar.write(end)
+start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
+end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
 
 button = st.sidebar.button('RUN')
 if (button==True):
