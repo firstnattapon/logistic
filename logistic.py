@@ -109,7 +109,7 @@ class  delta :
         final['0'] =  0
         final['t'] =    final.index.dayofyear
         return final
-    
+linear =  st.sidebar.checkbox('linear',value=False)    
 λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=3.99)
 N = st.sidebar.number_input('N', min_value=50 , max_value=10000 , value=9999) 
 x = np.zeros(N)
@@ -125,7 +125,6 @@ limit =  int(col5.text_input("limit" , "5000"))
 minimum_re = float(col6.text_input("minimum_re" , "0.005"))
 start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
 end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
-linear =  st.sidebar.checkbox('linear',value=False)
 
 button = st.sidebar.button('RUN_series')
 if (button==True):
