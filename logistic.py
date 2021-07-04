@@ -111,14 +111,14 @@ class  delta :
         return final
 
 λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=3.99)
-N = st.sidebar.number_input('N', min_value=50 , max_value=2304 , value=2304  ) 
+N = st.sidebar.number_input('N', min_value=50 , max_value=10000 , value=5000  ) 
 x = np.zeros(N)
 x[0] = st.sidebar.number_input('x0', min_value=0.0, max_value=1.0, value=0.01 )
 
 for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
     
-max = st.sidebar.number_input('max' ,0 , 10000 ,5000)
+max = st.sidebar.number_input('max' ,0 , 5000 ,2304#)
 z = np.around(x*max)
 
 if st.sidebar.checkbox('linear',value=False) :
