@@ -149,6 +149,12 @@ if (button==True):
                    )
     delta_A= delta_A.final()        
     st.code('{} \n\n n = {}'.format(list(code) , len(code)))
+    
+    _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+    st.line_chart(_)
+    _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
+    st.line_chart(_)
+    
 else : pass
 
 if st.checkbox('Scatter',value=False) :    
@@ -161,10 +167,6 @@ if st.checkbox('Scatter',value=False) :
 else : pass
 
 
-_ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
-st.line_chart(_)
-_ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
-st.line_chart(_)
 
 st.sidebar.write('data        :' , len(delta_A) )
 st.sidebar.write('')
