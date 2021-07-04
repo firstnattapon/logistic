@@ -114,6 +114,7 @@ class  delta :
 N = st.sidebar.number_input('N', min_value=50 , max_value=10000 , value=9999) 
 x = np.zeros(N)
 x[0] = st.sidebar.number_input('x0', min_value=0.0, max_value=1.0, value=0.37)
+max = st.sidebar.number_input('max' ,0 , 5000 ,2304)
 
 col1, col2 , col3 , col4 , col5 , col6   = st.beta_columns(6)
 pair_data = col1.text_input("pair_data", "CRV/USD")
@@ -124,8 +125,6 @@ limit =  int(col5.text_input("limit" , "5000"))
 minimum_re = float(col6.text_input("minimum_re" , "0.005"))
 start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
 end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
-
-max = st.sidebar.number_input('max' ,0 , 5000 ,2304)
 
 button = st.sidebar.button('RUN_series')
 if (button==True):
