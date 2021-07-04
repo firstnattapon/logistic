@@ -148,7 +148,7 @@ if (button==True):
                     start_end = [start , end]
                    )
     delta_A= delta_A.final()        
-
+    st.code('{} \n\n n = {}'.format(list(code) , len(code)))
 else : pass
 
 if st.checkbox('Scatter',value=False) :    
@@ -159,8 +159,6 @@ if st.checkbox('Scatter',value=False) :
     for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
     st.plotly_chart(fig)
 else : pass
-
-st.code('{} \n\n n = {}'.format(list(code) , len(code)))
 
 
 _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
