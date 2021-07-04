@@ -112,7 +112,7 @@ class  delta :
     
 linear =  st.sidebar.checkbox('linear',value=False)    
 Scatter =  st.sidebar.checkbox('Scatter',value=False)    
-cf =  st.sidebar.checkbox('cf',value=False)    
+cf =  st.sidebar.checkbox('cf',value=true)    
 
 λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=4.00)
 N = st.sidebar.number_input('N', min_value=50 , max_value=10000 , value=9999) 
