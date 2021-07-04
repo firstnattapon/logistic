@@ -155,27 +155,26 @@ if (button==True):
     _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
     st.line_chart(_)
     
+    st.sidebar.write('data        :' , len(delta_A) )
+    st.sidebar.write('')
+    st.sidebar.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
+    st.sidebar.write('')
+    st.sidebar.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
+
+    if st.checkbox('Scatter',value=False) :    
+        fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
+        st.plotly_chart(fig)
+
+        fig = px.scatter(x=z , y=z)
+        for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
+        st.plotly_chart(fig)
+    else : pass    
 else : pass
 
-if st.checkbox('Scatter',value=False) :    
-    fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
-    st.plotly_chart(fig)
-
-    fig = px.scatter(x=z , y=z)
-    for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
-    st.plotly_chart(fig)
-else : pass
 
 
 
-st.sidebar.write('data        :' , len(delta_A) )
-st.sidebar.write('')
-st.sidebar.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
-st.sidebar.write('')
-st.sidebar.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
-
-
-# _, _ , head , _ ,   = st.beta_columns(4) 
+# _, _ , had , _ ,   = st.beta_columns(4) 
 # head.write('เริ่ม')
 # st.dataframe(delta_A.head(1))
 # _, _ , tail , _ ,   = st.beta_columns(4)
