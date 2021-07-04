@@ -125,6 +125,7 @@ limit =  int(col5.text_input("limit" , "5000"))
 minimum_re = float(col6.text_input("minimum_re" , "0.005"))
 start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
 end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
+linear =  st.sidebar.checkbox('linear',value=False)
 
 button = st.sidebar.button('RUN_series')
 if (button==True):
@@ -133,7 +134,7 @@ if (button==True):
         
     z = np.around(x*max)
 
-    if st.sidebar.checkbox('linear',value=False) :
+    if linear:
         code = [ i for i in range(max)]
     else :
         code = np.sort(np.unique(z))
@@ -151,7 +152,6 @@ if (button==True):
 
 else : pass
 
-
 if st.checkbox('Scatter',value=False) :    
     fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
     st.plotly_chart(fig)
@@ -163,15 +163,11 @@ else : pass
 
 st.code('{} \n\n n = {}'.format(list(code) , len(code)))
 
-#  ____________________________________________________________________
 
-
-if st.checkbox('cf',value=False) :    
-    _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
-    st.line_chart(_)
-    _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
-    st.line_chart(_)
-else : pass
+_ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+st.line_chart(_)
+_ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
+st.line_chart(_)
 
 st.sidebar.write('data        :' , len(delta_A) )
 st.sidebar.write('')
