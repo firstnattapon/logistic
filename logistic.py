@@ -118,7 +118,7 @@ x[0] = st.sidebar.number_input('x0', min_value=0.0, max_value=1.0, value=0.01 )
 for n in range(N-1):
     x[n+1] = λ*x[n]*(1-x[n])
     
-max = st.sidebar.number_input('max' ,0 , 5000 ,2304#)
+max = st.sidebar.number_input('max' ,0 , 5000 ,2304)
 z = np.around(x*max)
 
 if st.sidebar.checkbox('linear',value=False) :
