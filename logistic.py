@@ -110,51 +110,48 @@ class  delta :
         final['t'] =    final.index.dayofyear
         return final
     
+λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=3.99)
+N = st.sidebar.number_input('N', min_value=50 , max_value=10000 , value=9999) 
+x = np.zeros(N)
+x[0] = st.sidebar.number_input('x0', min_value=0.0, max_value=1.0, value=0.37  )
+
+for n in range(N-1):
+    x[n+1] = λ*x[n]*(1-x[n])
+
+max = st.sidebar.number_input('max' ,0 , 5000 ,2304)
+z = np.around(x*max)
+
+if st.sidebar.checkbox('linear',value=False) :
+    code = [ i for i in range(max)]
+else :
+    code = np.sort(np.unique(z))    
+
+if st.checkbox('Scatter',value=False) :    
+    fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
+    st.plotly_chart(fig)
+
+    fig = px.scatter(x=z , y=z)
+    for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
+    st.plotly_chart(fig)
+else : pass
+
+st.code('{} \n\n n = {}'.format(list(code) , len(code)))
+
+#  ____________________________________________________________________
+
+col1, col2 , col3 , col4 , col5 , col6   = st.beta_columns(6)
+pair_data = col1.text_input("pair_data", "CRV/USD")
+fix_value = float(col2.text_input("fix_value", "0.5" ))
+invest =  int(col3.text_input("invest" , "1000"))
+timeframe = col4.text_input("timeframe", "5m")
+limit =  int(col5.text_input("limit" , "5000"))
+minimum_re = float(col6.text_input("minimum_re" , "0.005"))
+start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday ; st.sidebar.write(start)
+end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday ; st.sidebar.write(end)
+
+
 button = st.sidebar.button('RUN')
 if (button==True):
-
-    λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=3.99)
-    N = st.sidebar.number_input('N', min_value=50 , max_value=10000 , value=9999) 
-    x = np.zeros(N)
-    x[0] = st.sidebar.number_input('x0', min_value=0.0, max_value=1.0, value=0.37  )
-
-    for n in range(N-1):
-        x[n+1] = λ*x[n]*(1-x[n])
-
-    max = st.sidebar.number_input('max' ,0 , 5000 ,2304)
-    z = np.around(x*max)
-
-    if st.sidebar.checkbox('linear',value=False) :
-        code = [ i for i in range(max)]
-    else :
-        code = np.sort(np.unique(z))    
-
-    if st.checkbox('Scatter',value=False) :    
-        fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
-        st.plotly_chart(fig)
-
-        fig = px.scatter(x=z , y=z)
-        for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
-        st.plotly_chart(fig)
-    else : pass
-
-    st.code('{} \n\n n = {}'.format(list(code) , len(code)))
-
-    #  ____________________________________________________________________
-
-    col1, col2 , col3 , col4 , col5 , col6   = st.beta_columns(6)
-    pair_data = col1.text_input("pair_data", "CRV/USD")
-    fix_value = float(col2.text_input("fix_value", "0.5" ))
-    invest =  int(col3.text_input("invest" , "1000"))
-    timeframe = col4.text_input("timeframe", "5m")
-    limit =  int(col5.text_input("limit" , "5000"))
-    minimum_re = float(col6.text_input("minimum_re" , "0.005"))
-    start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday ; st.sidebar.write(start)
-    end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday ; st.sidebar.write(end)
-
-
-    st.button('Hit me')
-
     delta_A = delta(usd = invest ,
                     fix_value = fix_value ,  
                     pair_data = pair_data ,
@@ -166,23 +163,22 @@ if (button==True):
                    )
 
     delta_A= delta_A.final()
-
-
-    if st.checkbox('cf',value=False) :    
-        _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
-        st.line_chart(_)
-        _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
-        st.line_chart(_)
-    else : pass
-
-    st.sidebar.write('data        :' , len(delta_A) )
-    st.sidebar.write('')
-    st.sidebar.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
-    st.sidebar.write('')
-    st.sidebar.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
-    
 else : pass
     
+
+if st.checkbox('cf',value=False) :    
+    _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+    st.line_chart(_)
+    _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
+    st.line_chart(_)
+else : pass
+
+st.sidebar.write('data        :' , len(delta_A) )
+st.sidebar.write('')
+st.sidebar.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
+st.sidebar.write('')
+st.sidebar.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
+
 
 # _, _ , head , _ ,   = st.beta_columns(4) 
 # head.write('เริ่ม')
