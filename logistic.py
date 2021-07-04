@@ -109,7 +109,11 @@ class  delta :
         final['0'] =  0
         final['t'] =    final.index.dayofyear
         return final
+    
 linear =  st.sidebar.checkbox('linear',value=False)    
+Scatter =  st.sidebar.checkbox('Scatter',value=False)    
+cf =  st.sidebar.checkbox('cf',value=False)    
+
 λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=3.99)
 N = st.sidebar.number_input('N', min_value=50 , max_value=10000 , value=9999) 
 x = np.zeros(N)
@@ -137,6 +141,15 @@ if (button==True):
         code = [ i for i in range(max)]
     else :
         code = np.sort(np.unique(z))
+        
+    if Scatter :    
+        fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
+        st.plotly_chart(fig)
+
+        fig = px.scatter(x=z , y=z)
+        for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
+        st.plotly_chart(fig)
+    else : pass            
 
     delta_A = delta(usd = invest ,
                     fix_value = fix_value ,  
@@ -150,28 +163,19 @@ if (button==True):
     delta_A= delta_A.final()        
     st.code('{} \n\n n = {}'.format(list(code) , len(code)))
     
-    _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
-    st.line_chart(_)
-    _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
-    st.line_chart(_)
-    
-    st.sidebar.write('data        :' , len(delta_A) )
-    st.sidebar.write('')
-    st.sidebar.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
-    st.sidebar.write('')
-    st.sidebar.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
+    if cf :    
+        _ = delta_A[['cf_change' ,'price_change' ,'0' ]] ; _.columns = ['1: cf_%', '2: mkt_%' , "3: zero_line"] 
+        st.line_chart(_)
+        _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
+        st.line_chart(_)
 
-    if st.checkbox('Scatter',value=False) :    
-        fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
-        st.plotly_chart(fig)
-
-        fig = px.scatter(x=z , y=z)
-        for l in np.sort(np.unique(z)): fig.add_hline(y=l , line_width=1.0)
-        st.plotly_chart(fig)
-    else : pass    
+        st.sidebar.write('data        :' , len(delta_A) )
+        st.sidebar.write('')
+        st.sidebar.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
+        st.sidebar.write('')
+        st.sidebar.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
+    else : pass
 else : pass
-
-
 
 
 # _, _ , had , _ ,   = st.beta_columns(4) 
