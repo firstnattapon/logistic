@@ -125,12 +125,13 @@ minimum_re = float(col6.text_input("minimum_re" , "0.005"))
 start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
 end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
 
+max = st.sidebar.number_input('max' ,0 , 5000 ,2304)
+
 button = st.sidebar.button('RUN_series')
 if (button==True):
     for n in range(N-1):
         x[n+1] = λ*x[n]*(1-x[n])
         
-    max = st.sidebar.number_input('max' ,0 , 5000 ,2304)
     z = np.around(x*max)
 
     if st.sidebar.checkbox('linear',value=False) :
