@@ -177,7 +177,7 @@ if (button==True):
     else : pass
     
     st.stop()
-else : st.stop()
+else : pass
 
 
 # _, _ , had , _ ,   = st.beta_columns(4) 
