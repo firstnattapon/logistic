@@ -114,10 +114,10 @@ linear =  st.sidebar.checkbox('linear',value=False)
 Scatter =  st.sidebar.checkbox('Scatter',value=False)    
 cf =  st.sidebar.checkbox('cf',value=False)    
 
-λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=3.99)
+λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=4.00)
 N = st.sidebar.number_input('N', min_value=50 , max_value=10000 , value=9999) 
 x = np.zeros(N)
-x[0] = st.sidebar.number_input('x0', min_value=0.0, max_value=1.0, value=0.37)
+x[0] = st.sidebar.number_input('x0', min_value=0.001, max_value=0.999, value=0.042)
 max = st.sidebar.number_input('max' ,0 , 5000 ,2304)
 
 col1, col2 , col3 , col4 , col5 , col6   = st.beta_columns(6)
