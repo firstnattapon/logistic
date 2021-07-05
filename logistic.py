@@ -109,6 +109,11 @@ class  delta :
         final['0'] =  0
         final['t'] =    final.index.dayofyear
         return final
+
+button = st.sidebar.button('RUN_stop')
+if (button==True):
+    st.stop()
+else : pass   
     
 linear =  st.sidebar.checkbox('linear',value=False)    
 Scatter =  st.sidebar.checkbox('Scatter',value=False)    
@@ -205,12 +210,7 @@ if (button==True):
     st.stop()
 else : pass
 
-button = st.sidebar.button('RUN_stop')
-if (button==True):
-    st.stop()
-else : pass
 
-    
 
 
 # st.dataframe(delta_A)
