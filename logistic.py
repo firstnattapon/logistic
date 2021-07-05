@@ -110,11 +110,6 @@ class  delta :
         final['t'] =    final.index.dayofyear
         return final
 
-button = st.sidebar.button('RUN_stop')
-if (button==True):
-    st.stop()
-else : pass   
-    
 linear =  st.sidebar.checkbox('linear',value=False)    
 Scatter =  st.sidebar.checkbox('Scatter',value=False)    
 cf =  st.sidebar.checkbox('cf',value=False)    
