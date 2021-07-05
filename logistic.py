@@ -123,7 +123,7 @@ pair_x   = [i for i in pair_x if i[-7:] != 'UP/USDT']
 linear =  st.sidebar.checkbox('linear',value=False)    
 Scatter =  st.sidebar.checkbox('Scatter',value=False)    
 cf =  st.sidebar.checkbox('cf',value=False)    
-pair_data = st.sidebar.select_slider('pair_data', pair_x)
+pair_data = st.sidebar.selectbox('pair_data', pair_x)
 
 start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
 end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
