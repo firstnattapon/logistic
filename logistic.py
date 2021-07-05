@@ -133,7 +133,7 @@ pair_x   = [i for i in pair_x if i[-9:] != 'DOWN/USDT']
 pair_x   = [i for i in pair_x if i[-7:] != 'UP/USDT']
 
 col1, col2 , col3 , col4 , col5 , col6   = st.beta_columns(6)
-pair_data = col1.selectbox('pair_data', pair_x)
+pair_data = col1.select_slider('pair_data', pair_x)
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "5m")
