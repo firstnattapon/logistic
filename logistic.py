@@ -135,7 +135,7 @@ if loop:
     data = [np.nan] ; pair = [np.nan] ; cf = [np.nan]
     for p in pair_x : 
         ln = [ i for i in range(max)]
-        delta_z = delta(p_data= p, series_num= ln , start_end=[start , end])
+        delta_z = delta(pair_data= p, series_num= ln , start_end=[start , end])
         delta_df = delta_z.change()
         data.append(len(delta_df))
         pair.append(p)
