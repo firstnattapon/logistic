@@ -170,14 +170,14 @@ if (button==True):
         st.line_chart(_)
         _ = delta_A[[ 'pv_change', 'price_change' , '0' ]] ; _.columns = ['1: pv_%', '2: mkt_%' , "3: zero_line"]
         st.line_chart(_)
-
-        st.sidebar.write('data        :' , len(delta_A) )
-        st.sidebar.write('')
-        st.sidebar.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
-        st.sidebar.write('')
-        st.sidebar.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
     else : pass
     
+    st.sidebar.write('data        :' , len(delta_A) )
+    st.sidebar.write('')
+    st.sidebar.write( 'cf_usd      :'    ,  round(float(delta_A['cf_usd'][-1]) , 2 ) ,'$')
+    st.sidebar.write('')
+    st.sidebar.write( 'cf_change :'  , round(delta_A['cf_change'][-1] , 2),'%')
+
     st.stop()
 else : pass
 
