@@ -113,7 +113,7 @@ class  delta :
 
 linear =  st.sidebar.checkbox('linear',value=False)    
 Scatter =  st.sidebar.checkbox('Scatter',value=False)    
-cf =  st.sidebar.checkbox('cf',value=True)    
+cf =  st.sidebar.checkbox('cf',value=False)    
 
 start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
 end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
