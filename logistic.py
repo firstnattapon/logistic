@@ -119,11 +119,9 @@ pair_x   = [i for i in pair_x if i[-9:] != 'BEAR/USDT']
 pair_x   = [i for i in pair_x if i[-9:] != 'DOWN/USDT']
 pair_x   = [i for i in pair_x if i[-7:] != 'UP/USDT']    
     
-    
 linear =  st.sidebar.checkbox('linear',value=False)    
 Scatter =  st.sidebar.checkbox('Scatter',value=False)    
 cf =  st.sidebar.checkbox('cf',value=False)    
-pair_data = st.sidebar.selectbox('pair_data', pair_x)
 
 start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
 end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
@@ -135,12 +133,12 @@ x = np.zeros(N)
 x[0] = st.sidebar.number_input('x0', min_value=0.001, max_value=0.999, value=0.042 , format="%.3f")
 
 col2 , col3 , col4 , col5 , col6   = st.beta_columns(5)
+pair_data = st.sidebar.selectbox('pair_data', pair_x)
 fix_value = float(col2.text_input("fix_value", "0.5" ))
 invest =  int(col3.text_input("invest" , "1000"))
 timeframe = col4.text_input("timeframe", "5m")
 limit =  int(col5.text_input("limit" , "5000"))
 minimum_re = float(col6.text_input("minimum_re" , "0.005"))
-
 
 button = st.sidebar.button('RUN_series')
 if (button==True):
