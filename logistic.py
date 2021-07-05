@@ -110,9 +110,11 @@ class  delta :
         final['t'] =    final.index.dayofyear
         return final
     
-linear =  st.sidebar.checkbox('linear',value=False)    
-Scatter =  st.sidebar.checkbox('Scatter',value=False)    
-cf =  st.sidebar.checkbox('cf',value=True)    
+a, b , c  = st.beta_columns(3)
+
+linear =  a.sidebar.checkbox('linear',value=False)    
+Scatter =  b.sidebar.checkbox('Scatter',value=False)    
+cf =  c.sidebar.checkbox('cf',value=True)    
 
 start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday #; st.sidebar.write(start)
 end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday #; st.sidebar.write(end)
