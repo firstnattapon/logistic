@@ -205,4 +205,12 @@ if (button==True):
     st.stop()
 else : pass
 
+button = st.sidebar.button('RUN_stop')
+if (button==True):
+    st.stop()
+else : pass
+
+    
+
+
 # st.dataframe(delta_A)
