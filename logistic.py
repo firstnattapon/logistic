@@ -110,7 +110,6 @@ class  delta :
         final['t'] =    final.index.dayofyear
         return final
     
-
 exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
 e = exchange.load_markets()
 pair_x   = [i for i in e if i[-1] == 'P']
@@ -188,6 +187,5 @@ if (button==True):
 
     st.stop()
 else : pass
-
 
 # st.dataframe(delta_A)
