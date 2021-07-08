@@ -115,8 +115,8 @@ Scatter =  st.sidebar.checkbox('Scatter',value=False)
 cf =  st.sidebar.checkbox('cf',value=False)    
 loop =  st.sidebar.checkbox('loop',value=False)    
 
-start = st.sidebar.date_input('start' , datetime.date(2021,6,21)) ; start = start.timetuple().tm_yday ; st.sidebar.write(start)
-end = st.sidebar.date_input('end', datetime.date(2021,6,28)) ; end =  end.timetuple().tm_yday ; st.sidebar.write(end)
+start = st.sidebar.date_input('start' , datetime.date(2021,6,28)) ; start = start.timetuple().tm_yday ;# st.sidebar.write(start)
+end = st.sidebar.date_input('end', datetime.date(2021,7,05)) ; end =  end.timetuple().tm_yday ;# st.sidebar.write(end)
 max = st.sidebar.number_input('max' ,0 , 5000 ,2304)
 
 λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=4.00)
