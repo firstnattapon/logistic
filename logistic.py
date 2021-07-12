@@ -170,8 +170,9 @@ if (button==True):
         code = np.sort(np.unique(z))
         
     if input:
-        code =  list(st.text_input('code'))
-        
+        text =  list(st.text_input('code'))
+        code = [int(t) for t in text]
+
     if Scatter :    
         fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
         st.plotly_chart(fig)
