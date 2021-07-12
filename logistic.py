@@ -171,7 +171,7 @@ if (button==True):
         
     if input:
         text =  list(st.text_input('code'))
-        code = [float(t) for t in text]
+        code = [int(t) for t in text]
 
     if Scatter :    
         fig = go.Figure(data=go.Scatter(y= z , mode='lines+markers'))
