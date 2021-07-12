@@ -120,10 +120,10 @@ start = st.sidebar.date_input('start' , datetime.date(2021,6,28)) ; start = star
 end = st.sidebar.date_input('end', datetime.date(2021,7,5)) ; end =  end.timetuple().tm_yday ; st.sidebar.write(end)
 max = st.sidebar.number_input('max' ,0 , 5000 ,2304)
 
-λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=4.00 )
+λ = st.sidebar.number_input('λ', min_value=0.0 , max_value=4.0 , value=4.00, format="%.3f" )
 N = st.sidebar.number_input('N', min_value=50 , max_value=10000 , value=9999) 
 x = np.zeros(N)
-x[0] = st.sidebar.number_input('x0', min_value=0.001, max_value=0.999, value=0.890 , format="%.3")
+x[0] = st.sidebar.number_input('x0', min_value=0.001, max_value=0.999, value=0.890 , format="%.3f")
 
 exchange = ccxt.ftx({'apiKey': '', 'secret': '', 'enableRateLimit': True})
 e = exchange.load_markets()
