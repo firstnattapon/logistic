@@ -148,7 +148,7 @@ if loop:
     pair_z = df['p'].values
     pair_data = st.sidebar.selectbox('pair_data', pair_z)    
 else :
-    pair_data = st.sidebar.selectbox('pair_data', pair_x , 20)    
+    pair_data = st.sidebar.selectbox('pair_data', pair_x , 50)    
 
 col2 , col3 , col4 , col5 , col6   = st.beta_columns(5)
 fix_value = float(col2.text_input("fix_value", "0.5" ))
