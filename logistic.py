@@ -131,10 +131,11 @@ pair_x   = [i for i in e if i[-1] == 'P']
 pair_x   = [i for i in pair_x if i[-9:] != 'BULL/USDT']
 pair_x   = [i for i in pair_x if i[-9:] != 'BEAR/USDT']
 pair_x   = [i for i in pair_x if i[-9:] != 'DOWN/USDT']
-pair_x   = [i for i in pair_x if i[-7:] != 'UP/USDT']    
+pair_x   = [i for i in pair_x if i[-7:] != 'UP/USDT']
+
 if loop:
     data = [np.nan] ; pair = [np.nan] ; cf = [np.nan]
-    for p in pair_x : 
+    for p  in  pair_x: 
         ln = [ i for i in range(max)]
         delta_z = delta(pair_data= p, series_num= ln , start_end=[start , end])
         delta_df = delta_z.change()
@@ -148,7 +149,7 @@ if loop:
     pair_z = df['p'].values
     pair_data = st.sidebar.selectbox('pair_data', pair_z)    
 else :
-    pair_data = st.sidebar.selectbox('pair_data', pair_x , st.sidebar.number_input('pair_v' , 0 , 1000 , 93) )    
+    pair_data = st.sidebar.selectbox('pair_data', pair_x , 93 )    
 
 col2 , col3 , col4 , col5 , col6   = st.beta_columns(5)
 fix_value = float(col2.text_input("fix_value", "0.5" ))
